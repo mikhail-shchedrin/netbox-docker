@@ -1,0 +1,21 @@
+# FROM netboxcommunity/netbox:latest
+FROM netboxcommunity/netbox:v4.1
+
+COPY ./plugin_requirements.txt /opt/netbox/
+RUN /opt/netbox/venv/bin/pip install  --no-warn-script-location -r /opt/netbox/plugin_requirements.txt
+
+# These lines are only required if your plugin has its own static files.
+# COPY configuration/configuration.py /etc/netbox/config/configuration.py
+
+
+# COPY configuration/local_settings.py /opt/netbox/netbox/netbox/local_settings.py
+COPY dist/local_settings.py /opt/netbox/netbox/netbox/local_settings.py
+
+# COPY configuration/local_settings.py /etc/netbox/config/local_settings.py
+# COPY configuration/plugins.py /etc/netbox/config/plugins.py
+# RUN SECRET_KEY="dummydummydummydummydummydummydummydummydummydummy" /opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py migrate
+# RUN SECRET_KEY="dummydummydummydummydummydummydummydummydummydummy" /opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py collectstatic --no-input
+
+
+# SECRET_KEY="dummyKeyWithMinimumLength-------------------------"
+# SECRET_KEY='r(m)9nLGnz$(_q3N4z1k(EFsMCjjjzx08x9VhNVcfd%6RF#r!6DE@+V5Zk2X'
