@@ -1,5 +1,6 @@
 services:
   netbox:
+    restart: always
     image: netbox:v4.1-vcs-plugin
     pull_policy: never
     ports:
@@ -27,8 +28,16 @@ services:
       SUPERUSER_PASSWORD: "admin"
       VERSION: "v4.1"
   netbox-worker:
+    restart: always
     image: netbox:v4.1-vcs-plugin
     pull_policy: never
   netbox-housekeeping:
+    restart: always
     image: netbox:v4.1-vcs-plugin
     pull_policy: never
+  postgres:
+    restart: always
+  redis:
+    restart: always
+  redis-cache:
+    restart: always
