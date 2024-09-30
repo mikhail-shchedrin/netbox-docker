@@ -27,6 +27,8 @@ services:
       SUPERUSER_NAME: "admin"
       SUPERUSER_PASSWORD: "admin"
       VERSION: "v4.1"
+      DEBUG: "true"
+      DEVELOPER: "true"
   netbox-worker:
     restart: always
     image: netbox:v4.1-vcs-plugin
